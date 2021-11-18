@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 routes.index(router);
 routes.login(router);
+routes.task(router);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
