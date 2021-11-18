@@ -3,8 +3,10 @@ loginController = require("../controllers/loginController")
 
 exports.index = (router) => {
     router.get("/", indexController.getIndex);
+    
 };
 
 exports.login = (router) => {
-    router.get("/login", loginController.getLogin)
+    router.get("/login", loginController.getLogin);
+    router.post("/login", loginController.postLogin);
 }
