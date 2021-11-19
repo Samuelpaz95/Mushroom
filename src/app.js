@@ -46,9 +46,10 @@ app.use((request, response, next) => {
 });
 
 // routes
-app.use(require('./routes/index'))
-app.use('/login', require('./routes/authentications'))
-app.use('/tasks', require('./routes/tasks'))
+app.use(require('./routes/index'));
+app.use('/login', require('./routes/authentications'));
+app.use('/classes', require('./routes/classes'));
+app.use('/tasks', require('./routes/tasks'));
 
 // static
 app.use(express.static(path.join(__dirname, 'static')));
