@@ -1,22 +1,24 @@
-const db = require("./db");
+const pool = require('./db');
 
-exports.User = class User extends db.Model {
+module.exports = class User {
 
     static tableName = "MRDB_User";
-    
-    constructor(username, email, firstName, lastName) {
-        super();
+
+    constructor(username, email, passwrd) {
         this.username = username;
         this.email = email;
-        this.first_name = firstName;
-        this.last_name = lastName;
+        this.passwrd = passwrd;
     }
 
-    static query(fields, filters, callback) {
-        super.query(fields, filters, this.tableName, callback);
+    save() {
+        return pool.query('INSERT INTO MRDB_User SET ?', [this]);
     }
 
-    static createUser(obj){
+    static getUserBy(obj){
+        return pool.query(`SELECT * FROM ${User.tableName} WHERE ?`, [obj]);
+    }
+
+    static createUser(obj) {
         const user = new User();
         return Object.assign(user, obj);
     }

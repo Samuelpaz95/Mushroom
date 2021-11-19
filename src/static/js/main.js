@@ -40,20 +40,21 @@ document.addEventListener("DOMContentLoaded", () => {
         createAccountForm.classList.add("form--hidden");
     });
 
-    loginForm.addEventListener("submit", e => {
+    loginForm.addEventListener("submit", e, next => {
         e.preventDefault();
-        setFormMessage(loginForm, "error", "Invalid username/password combination");
-        alert(loginForm.getElementById(signinUser))
+        // setFormMessage(loginForm, "error", "Invalid username/password combination");
+        alert(loginForm.getElementById(signinUser));
+        next(); // sent to backend
     });
 
-    createAccountForm.addEventListener("submit", e =>{
+    createAccountForm.addEventListener("submit", e, next =>{
         e.preventDefault();
         var user = document.getElementById('signupUsername').value;
         var email = document.getElementById('signupEmail').value;
         var password = document.getElementById('signupPassword').value;
         var repassword = document.getElementById('signupRePassword').value;
         if(validated){
-            //enviar parametros al backend
+            next(); // envia los datos al backend;
         }
     });
     
