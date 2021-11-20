@@ -1,5 +1,12 @@
 const path = require('path');
+const User = require("../models/User");
 
 exports.getLogin = (request, response, next) => {
-    response.sendFile(path.dirname(__dirname) + "/views/login.html");
+    response.render("login");
+};
+
+exports.postLogin = (request, response) => {
+    const { username, email, password } = request.body
+    console.log(request.body);
+    response.redirect("login");
 };
